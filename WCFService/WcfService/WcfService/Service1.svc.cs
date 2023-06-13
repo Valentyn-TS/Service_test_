@@ -12,6 +12,12 @@ namespace WcfService
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
     {
+        int id = 0;
+        public void AddUser()
+        {
+            id++;
+        }
+
         public string GetData(int value)
         {
             return string.Format("You entered: {0}", value);
@@ -28,6 +34,11 @@ namespace WcfService
                 composite.StringValue += "Suffix";
             }
             return composite;
+        }
+
+        public int GetUser()
+        {
+            return id;
         }
 
         public int Square(int x)

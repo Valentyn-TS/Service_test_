@@ -22,7 +22,13 @@ namespace WcfService
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
-        // TODO: Add your service operations here
+        [OperationContract]
+        [WebGet(UriTemplate = "", ResponseFormat = WebMessageFormat.Json)]
+        int GetUser();
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        void AddUser();
     }
 
 
