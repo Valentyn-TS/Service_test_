@@ -8,7 +8,7 @@ using System.Text;
 namespace SMS
 {
     [ServiceContract]
-    public interface IMesageService
+    public interface IMesageServ
     {
         [OperationContract]
         string GetMessage(string message);

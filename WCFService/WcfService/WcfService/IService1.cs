@@ -6,15 +6,18 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 
-namespace WebService
+namespace WcfService
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]
-    public interface IWebService
+    public interface IService1
     {
 
         [OperationContract]
         string GetData(int value);
+
+        [OperationContract]
+        int Square(int x);
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);

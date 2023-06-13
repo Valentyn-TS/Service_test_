@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
-using SMS;
+
 
 namespace SMSHost
 {
@@ -13,9 +13,12 @@ namespace SMSHost
 
         static void Main(string[] args)
         {
-            using (var host = new ServiceHost(typeof(MessageService))) 
+            using (var host = new ServiceHost(typeof(SMS.MessageServ))) 
             {
+                host.Open();
 
+                Console.WriteLine("Host started...");
+                Console.ReadLine();
             };
         }
     }
