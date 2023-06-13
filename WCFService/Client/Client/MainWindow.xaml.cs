@@ -27,6 +27,8 @@ namespace Client
 
          private void service_start_Button_Click(object sender, RoutedEventArgs e)
         {
+            var client = new Service1Client();
+            service_start_Button.Content = "Stop";
 
         }
     }
