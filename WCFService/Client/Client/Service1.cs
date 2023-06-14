@@ -11,7 +11,7 @@
 namespace WcfService
 {
     using System.Runtime.Serialization;
-    
+    using System.ServiceProcess;
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
