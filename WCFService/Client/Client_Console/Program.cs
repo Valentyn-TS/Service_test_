@@ -1,7 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using ServiceReference1;
-using System.ServiceModel;
 
 Service1Client client = new Service1Client();
 
