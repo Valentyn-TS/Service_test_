@@ -9,7 +9,8 @@
 
 namespace MultiplyService
 {
-        
+    
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IMultiplyService")]
     public interface IMultiplyService
@@ -17,6 +18,9 @@ namespace MultiplyService
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMultiplyService/Multiply", ReplyAction="http://tempuri.org/IMultiplyService/MultiplyResponse")]
         System.Threading.Tasks.Task<int> MultiplyAsync(int x, int y);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMultiplyService/GetLoginStatus", ReplyAction="http://tempuri.org/IMultiplyService/GetLoginStatusResponse")]
+        System.Threading.Tasks.Task<string> GetLoginStatusAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
@@ -65,6 +69,11 @@ namespace MultiplyService
         public System.Threading.Tasks.Task<int> MultiplyAsync(int x, int y)
         {
             return base.Channel.MultiplyAsync(x, y);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetLoginStatusAsync()
+        {
+            return base.Channel.GetLoginStatusAsync();
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()
