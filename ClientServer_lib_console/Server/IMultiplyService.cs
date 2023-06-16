@@ -16,7 +16,7 @@ namespace Server
         int Multiply(int x, int y);
 
         [OperationContract]
-        string GetLoginStatus();
+        void GetLoginStatus();
     }
 
 }

@@ -16,7 +16,7 @@ namespace Server
             return x * y;
         }
 
-        public string GetLoginStatus()
+        public void GetLoginStatus()
         {
             string result = string.Empty;
 
@@ -33,7 +33,17 @@ namespace Server
                             ServiceSecurityContext.Current.PrimaryIdentity.Name);
                         return result;
             */
-            return result = ServiceSecurityContext.Current.PrimaryIdentity.IsAuthenticated == null ? "No object. Null" : "++";
+            try
+            {
+                bool isAuthenticated = ServiceSecurityContext.Current.PrimaryIdentity.IsAuthenticated;
+            }
+            catch (Exception ex) 
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+                Console.ReadKey();
+            }
+            
         }
     }
 }
