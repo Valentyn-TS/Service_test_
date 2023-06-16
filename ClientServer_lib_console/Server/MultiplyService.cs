@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.Security.Permissions;
 using System.Text;
 
 namespace Server
@@ -19,17 +20,20 @@ namespace Server
         {
             string result = string.Empty;
 
-            if (!ServiceSecurityContext.Current.PrimaryIdentity.IsAuthenticated)
-                {
-                    result = "User is not Authenticated";
-                    return result;
-                }
 
-            result = string.Format("Date: {0}, AuthType: {1}, User: {2}", 
-                DateTime.Now.ToString(), 
-                ServiceSecurityContext.Current.PrimaryIdentity.AuthenticationType, 
-                ServiceSecurityContext.Current.PrimaryIdentity.Name);
-            return result;
+            /*            if (!ServiceSecurityContext.Current.PrimaryIdentity.IsAuthenticated)
+                            {
+                                result = "User is not Authenticated";
+                                return result;
+                            }
+
+                        result = string.Format("Date: {0}, AuthType: {1}, User: {2}", 
+                            DateTime.Now.ToString(), 
+                            ServiceSecurityContext.Current.PrimaryIdentity.AuthenticationType, 
+                            ServiceSecurityContext.Current.PrimaryIdentity.Name);
+                        return result;
+            */
+            return result = ServiceSecurityContext.Current.PrimaryIdentity.IsAuthenticated == null ? "No object. Null" : "++";
         }
     }
 }
