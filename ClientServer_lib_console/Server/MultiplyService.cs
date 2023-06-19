@@ -9,6 +9,7 @@ using System.Text;
 namespace Server
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
+    [ServiceBehavior(IncludeExceptionDetailInFaults = true)]
     public class MultiplyService : IMultiplyService
     {
         public int Multiply(int x, int y)
@@ -16,34 +17,5 @@ namespace Server
             return x * y;
         }
 
-        public void GetLoginStatus()
-        {
-            string result = string.Empty;
-
-
-            /*            if (!ServiceSecurityContext.Current.PrimaryIdentity.IsAuthenticated)
-                            {
-                                result = "User is not Authenticated";
-                                return result;
-                            }
-
-                        result = string.Format("Date: {0}, AuthType: {1}, User: {2}", 
-                            DateTime.Now.ToString(), 
-                            ServiceSecurityContext.Current.PrimaryIdentity.AuthenticationType, 
-                            ServiceSecurityContext.Current.PrimaryIdentity.Name);
-                        return result;
-            */
-            try
-            {
-                bool isAuthenticated = ServiceSecurityContext.Current.PrimaryIdentity.IsAuthenticated;
-            }
-            catch (Exception ex) 
-            {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
-                Console.ReadKey();
-            }
-            
-        }
     }
 }

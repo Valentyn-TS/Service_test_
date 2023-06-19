@@ -17,10 +17,49 @@ namespace MultiplyService
     {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMultiplyService/Multiply", ReplyAction="http://tempuri.org/IMultiplyService/MultiplyResponse")]
-        System.Threading.Tasks.Task<int> MultiplyAsync(int x, int y);
+        System.Threading.Tasks.Task<MultiplyService.MultiplyResponse> MultiplyAsync(MultiplyService.MultiplyRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="Multiply", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class MultiplyRequest
+    {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMultiplyService/GetLoginStatus", ReplyAction="http://tempuri.org/IMultiplyService/GetLoginStatusResponse")]
-        System.Threading.Tasks.Task<string> GetLoginStatusAsync();
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public int x;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public int y;
+        
+        public MultiplyRequest()
+        {
+        }
+        
+        public MultiplyRequest(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="MultiplyResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class MultiplyResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public int MultiplyResult;
+        
+        public MultiplyResponse()
+        {
+        }
+        
+        public MultiplyResponse(int MultiplyResult)
+        {
+            this.MultiplyResult = MultiplyResult;
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
@@ -66,14 +105,9 @@ namespace MultiplyService
         {
         }
         
-        public System.Threading.Tasks.Task<int> MultiplyAsync(int x, int y)
+        public System.Threading.Tasks.Task<MultiplyService.MultiplyResponse> MultiplyAsync(int x, MultiplyService.MultiplyRequest request)
         {
-            return base.Channel.MultiplyAsync(x, y);
-        }
-        
-        public System.Threading.Tasks.Task<string> GetLoginStatusAsync()
-        {
-            return base.Channel.GetLoginStatusAsync();
+            return base.Channel.MultiplyAsync(request);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()
@@ -115,13 +149,19 @@ namespace MultiplyService
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }
-        
+
+        public Task<MultiplyResponse> MultiplyAsync(MultiplyRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
         public enum EndpointConfiguration
         {
             
             BasicHttpBinding_IMultiplyService,
             
-            NetTcpBinding_IMultiplyService,
+            NetTcpBinding_IMultiplyService
+
         }
     }
 }
