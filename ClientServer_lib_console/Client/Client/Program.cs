@@ -6,6 +6,10 @@ int x = Convert.ToInt32(Console.ReadLine());
 Console.Write("y = ");
 int y = Convert.ToInt32(Console.ReadLine());
 */
+EndpointAddressBuilder myEndPoint = new EndpointAddressBuilder();
+WSHttpBinding myBinding = new WSHttpBinding(SecurityMode.Message);
+
+
 var endPointConfiguration = MultiplyService.MultiplyServiceClient.EndpointConfiguration.BasicHttpBinding_IMultiplyService;
 var client = new MultiplyService.MultiplyServiceClient(endPointConfiguration);
 
