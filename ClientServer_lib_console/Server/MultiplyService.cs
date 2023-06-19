@@ -41,8 +41,8 @@ namespace Server
 
         public void MyValidator(string userName, string password)
         {
-            MyCustomUserNameValidator Validator = new MyCustomUserNameValidator();
-            Validator.Validate(userName, password);
+            MyCustomUserNameValidator validator = new MyCustomUserNameValidator();
+            validator.Validate(userName, password);
         }
     }
 }

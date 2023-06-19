@@ -12,10 +12,10 @@ var client = new MultiplyService.MultiplyServiceClient(endPointConfiguration);
 //int result = await client.MultiplyAsync(x, y);
 //Console.WriteLine("{0} * {1} = {2}", x, y, result);
 
-string userName = "test1456";
+string userName = "test1";
 string password = "1test";
 
-await client.MyValidatorAsync(userName, password);
+await client.MyValidatorAsync(userName , password);
 
 client.Close();
 
