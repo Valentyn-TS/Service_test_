@@ -15,6 +15,9 @@ namespace Server
         [OperationContract]
         int Multiply(int x, int y);
 
+        [OperationContract]
+        void MyValidator(string userName, string password);
+
     }
 
 }

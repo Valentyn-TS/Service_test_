@@ -12,35 +12,15 @@ namespace MultiplyService
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IMultiplyService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName= "MultiplyService.IMultiplyService")]
     public interface IMultiplyService
     {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMultiplyService/Multiply", ReplyAction="http://tempuri.org/IMultiplyService/MultiplyResponse")]
-        System.Threading.Tasks.Task<MultiplyService.MultiplyResponse> MultiplyAsync(MultiplyService.MultiplyRequest request);
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="Multiply", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class MultiplyRequest
-    {
+        System.Threading.Tasks.Task<int> MultiplyAsync(int x, int y);
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public int x;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
-        public int y;
-        
-        public MultiplyRequest()
-        {
-        }
-        
-        public MultiplyRequest(int x, int y)
-        {
-            this.x = x;
-            this.y = y;
-        }
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMultiplyService/MyValidator", ReplyAction="http://tempuri.org/IMultiplyService/MyValidatorResponse")]
+        System.Threading.Tasks.Task MyValidatorAsync(string userName, string password);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
@@ -86,9 +66,14 @@ namespace MultiplyService
         {
         }
         
-        public System.Threading.Tasks.Task<MultiplyService.MultiplyResponse> MultiplyAsync(int x, MultiplyService.MultiplyRequest request)
+        public System.Threading.Tasks.Task<int> MultiplyAsync(int x, int y)
         {
-            return base.Channel.MultiplyAsync(request);
+            return base.Channel.MultiplyAsync(x, y);
+        }
+        
+        public System.Threading.Tasks.Task MyValidatorAsync(string userName, string password)
+        {
+            return base.Channel.MyValidatorAsync(userName, password);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()
@@ -130,14 +115,13 @@ namespace MultiplyService
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }
-
+        
         public enum EndpointConfiguration
         {
             
             BasicHttpBinding_IMultiplyService,
             
-            NetTcpBinding_IMultiplyService
-
+            NetTcpBinding_IMultiplyService,
         }
     }
 }
