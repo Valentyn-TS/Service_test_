@@ -21,13 +21,13 @@ namespace Server
         {
             if (null == userName || null == password)
             {
-                Console.WriteLine("userName or password are Null...");
+                Console.WriteLine("Error: userName or password are Null...");
             }
             else if (!(userName == "test1" && password == "1test"))
             {
-                Console.WriteLine("Unknown Username or Incorrect Password");
+                Console.WriteLine("Status: Unknown Username {0} or Incorrect Password", userName);
             }
-            else Console.WriteLine("Status: Ok!");
+            else Console.WriteLine("Status: user {0} was validated...", userName);
 
         }
     }
