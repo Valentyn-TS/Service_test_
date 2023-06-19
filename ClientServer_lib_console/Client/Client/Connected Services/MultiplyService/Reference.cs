@@ -43,25 +43,6 @@ namespace MultiplyService
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="MultiplyResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class MultiplyResponse
-    {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public int MultiplyResult;
-        
-        public MultiplyResponse()
-        {
-        }
-        
-        public MultiplyResponse(int MultiplyResult)
-        {
-            this.MultiplyResult = MultiplyResult;
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     public interface IMultiplyServiceChannel : MultiplyService.IMultiplyService, System.ServiceModel.IClientChannel
     {
@@ -148,11 +129,6 @@ namespace MultiplyService
                 return new System.ServiceModel.EndpointAddress("net.tcp://localhost:2023/MultiplyService");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
-        }
-
-        public Task<MultiplyResponse> MultiplyAsync(MultiplyRequest request)
-        {
-            throw new NotImplementedException();
         }
 
         public enum EndpointConfiguration
