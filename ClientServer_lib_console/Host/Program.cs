@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
+using System.Security.Cryptography.X509Certificates;
+using Server;
 
 namespace Host
 {
@@ -11,6 +13,7 @@ namespace Host
     {
         static void Main(string[] args)
         {
+
             using (var host = new ServiceHost(typeof(Server.MultiplyService)))
             {
                 host.Open();
@@ -20,6 +23,7 @@ namespace Host
 
                 host.Close();
             };
+
         }
     }
 }
