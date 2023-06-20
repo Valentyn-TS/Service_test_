@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using System.ServiceModel;
 using System.Security.Cryptography.X509Certificates;
 using Server;
+using System.ServiceModel.Description;
+using System.Collections.ObjectModel;
+using System.ServiceModel.Channels;
+using System.ServiceModel.Security;
 
 namespace Host
 {
@@ -13,17 +17,23 @@ namespace Host
     {
         static void Main(string[] args)
         {
+            ServiceHost serviceHost = new ServiceHost(typeof(MultiplyService));
 
-            using (var host = new ServiceHost(typeof(Server.MultiplyService)))
-            {
-                host.Open();
+            var behavior = new ServiceCredentials();
+            behavior.ClientCertificate.Authentication.CertificateValidationMode = X509CertificateValidationMode.None;
+            behavior.ClientCertificate.Authentication.RevocationMode = X509RevocationMode.NoCheck;
+            serviceHost.Description.Behaviors.Remove(typeof(ServiceCredentials));
+            serviceHost.Description.Behaviors.Add(behavior);
 
-                Console.WriteLine("Host started....");
-                Console.ReadLine();
 
-                host.Close();
-            };
+            serviceHost.Open();
+            Console.WriteLine("Service is host at " + DateTime.Now.ToString());
+            Console.WriteLine("Host is running... Press  key to stop");
+            Console.ReadLine();
 
+            serviceHost.Close();
         }
     }
+
+
 }
