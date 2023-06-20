@@ -21,12 +21,13 @@ namespace Host
 
             var behavior = new ServiceCredentials();
             behavior.ClientCertificate.Authentication.CertificateValidationMode = X509CertificateValidationMode.None;
-            behavior.ClientCertificate.Authentication.RevocationMode = X509RevocationMode.NoCheck;
+            behavior.ClientCertificate.Authentication.RevocationMode = X509RevocationMode.Online;
             serviceHost.Description.Behaviors.Remove(typeof(ServiceCredentials));
             serviceHost.Description.Behaviors.Add(behavior);
 
 
             serviceHost.Open();
+
             Console.WriteLine("Service is host at " + DateTime.Now.ToString());
             Console.WriteLine("Host is running... Press  key to stop");
             Console.ReadLine();
