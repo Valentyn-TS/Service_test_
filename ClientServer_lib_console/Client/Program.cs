@@ -18,7 +18,7 @@ cc.ClientCredentials.ClientCertificate.SetCertificate(
     StoreLocation.CurrentUser,
     StoreName.My,
     X509FindType.FindBySubjectName,
-    "/cert/client.pfx");
+    "client");
 
 cc.Open();
 
