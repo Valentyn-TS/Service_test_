@@ -71,7 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Service1.svc" />
-    <Content Include="Web.config" />
+    <Content Include="Web_old.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IService1.cs" />
@@ -83,11 +83,18 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="server.pfx" />
-    <None Include="Web.Debug.config">
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <None Include="Web_old.Debug.config">
+      <DependentUpon>Web_old.config</DependentUpon>
     </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
+    <None Include="Web_old.Release.config">
+      <DependentUpon>Web_old.config</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
