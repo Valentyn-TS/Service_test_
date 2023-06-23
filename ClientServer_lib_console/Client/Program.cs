@@ -1,6 +1,7 @@
 ﻿using ServiceReference1;
 using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel;
+using System.ServiceModel.Description;
 
 var myBinding = new WSHttpBinding();
 myBinding.Security.Mode = SecurityMode.Transport;
@@ -14,11 +15,18 @@ var ea = new EndpointAddress("https://localhost:44378/service1.svc");
 var cc = new Service1Client(myBinding, ea);
 
 // The client must specify a certificate trusted by the server.  
-cc.ClientCredentials.ClientCertificate.SetCertificate(
-    StoreLocation.CurrentUser,
-    StoreName.My,
-    X509FindType.FindBySubjectName,
-    "client");
+//cc.ClientCredentials.ClientCertificate.SetCertificate(
+//    StoreLocation.CurrentUser,
+//    StoreName.My,
+//    X509FindType.FindBySubjectName,
+//    "client");
+
+string certificatePath = @"C:\Users\Tsuba\CA\client.pfx";
+string certificatePassword = "";
+
+X509Certificate2 certificate = new X509Certificate2(certificatePath, certificatePassword);
+//ClientCredentials clientCredentials = new ClientCredentials();
+cc.ClientCredentials.ClientCertificate.Certificate = certificate;
 
 cc.Open();
 
