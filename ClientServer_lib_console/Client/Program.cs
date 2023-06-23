@@ -7,7 +7,7 @@ var myBinding = new WSHttpBinding();
 myBinding.Security.Mode = SecurityMode.Transport;
 myBinding.Security.Transport.ClientCredentialType = HttpClientCredentialType.Certificate;
 
-var ea = new EndpointAddress("https://localhost:44378/service1.svc");
+var ea = new EndpointAddress("https://localhost:44392/service1.svc");
 
 // Create the client. The code for the calculator
 // client is not shown here. See the sample applications  
