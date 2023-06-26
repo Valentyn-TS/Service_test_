@@ -17,7 +17,7 @@ var cc = new Service1Client(myBinding, ea);
 // The client must specify a certificate trusted by the server.  
 //cc.ClientCredentials.ClientCertificate.SetCertificate(
 //    StoreLocation.CurrentUser,
-//    StoreName.My,
+//    StoreName.My, 
 //    X509FindType.FindBySubjectName,
 //    "client");
 
