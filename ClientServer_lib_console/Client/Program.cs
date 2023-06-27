@@ -7,7 +7,7 @@ using TSMService;
 
 WSHttpBinding b = new WSHttpBinding();
 b.Security.Mode = SecurityMode.TransportWithMessageCredential;
-b.Security.Message.ClientCredentialType = MessageCredentialType.Certificate;
+b.Security.Message.ClientCredentialType = MessageCredentialType.Windows;
 
 Uri httpsAddress = new Uri("https://local:44318/");
 
@@ -18,7 +18,7 @@ Uri httpsAddress = new Uri("https://local:44318/");
 //Console.ReadLine();
 
 EndpointAddress ea = new EndpointAddress(httpsAddress);
-TSMServiceClient tSMServiceClient = new TSMServiceClient(b, ea);
+TSMServiceClient tSMServiceClient = new TSMServiceClient();
 
 string currentDirectory = Directory.GetCurrentDirectory();
 
