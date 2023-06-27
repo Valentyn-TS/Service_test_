@@ -4,9 +4,13 @@ using System.ServiceModel.Description;
 using System;
 using TSMService;
 
+
+
+
+
 TSMServiceClient tSMServiceClient = new TSMServiceClient();
 
-string result = tSMServiceClient.DoWorkAsync().Result;
+string result = await tSMServiceClient.DoWorkAsync();
 Console.WriteLine(result);
 
 Console.ReadKey();
