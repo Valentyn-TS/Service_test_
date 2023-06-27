@@ -28,9 +28,11 @@ X509Certificate2 certificate = new X509Certificate2(certificatePath, certificate
 //ClientCredentials clientCredentials = new ClientCredentials();
 cc.ClientCredentials.ClientCertificate.Certificate = certificate;
 
+
 cc.Open();
 
-int result = await cc.MultiplyAsync(5, 89);
+//int result = await cc.MultiplyAsync(5, 89);
+string result = cc.DoWorkAsync().Result;
 Console.WriteLine(result);
 Console.ReadLine();
 
