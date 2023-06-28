@@ -11,13 +11,8 @@ b.Security.Message.ClientCredentialType = MessageCredentialType.Windows;
 
 Uri httpsAddress = new Uri("https://local:44318/");
 
-//ServiceHost sh = new ServiceHost(typeof(Calculator), httpsAddress);
-//sh.AddServiceEndpoint(typeof(ICalculator), b, "HttpsCalculator");
-//sh.Open();
-//Console.WriteLine("Listening");
-//Console.ReadLine();
-
 EndpointAddress ea = new EndpointAddress(httpsAddress);
+
 TSMServiceClient tSMServiceClient = new TSMServiceClient();
 
 string currentDirectory = Directory.GetCurrentDirectory();
