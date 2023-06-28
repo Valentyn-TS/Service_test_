@@ -5,23 +5,16 @@ using System;
 using TSMService;
 
 
-WSHttpBinding b = new WSHttpBinding();
-b.Security.Mode = SecurityMode.TransportWithMessageCredential;
-b.Security.Message.ClientCredentialType = MessageCredentialType.Windows;
-
-Uri httpsAddress = new Uri("https://local:44318/");
-
-EndpointAddress ea = new EndpointAddress(httpsAddress);
-
 TSMServiceClient tSMServiceClient = new TSMServiceClient();
-
-string currentDirectory = Directory.GetCurrentDirectory();
 
 string certDirectoryPath = @"D:\Repos\Service_test_\ClientServer_lib_console\Client\cert\client.pfx";
 
 X509Certificate2 cert = new X509Certificate2(certDirectoryPath, "");
 
 tSMServiceClient.ClientCredentials.ClientCertificate.Certificate = cert;
+
+tSMServiceClient.ClientCredentials.UserName.UserName = "Valentyn";
+tSMServiceClient.ClientCredentials.UserName.Password = "test_441";
 
 tSMServiceClient.Open(); 
 
