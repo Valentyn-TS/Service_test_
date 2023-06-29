@@ -16,6 +16,8 @@ tSMServiceClient.ClientCredentials.ClientCertificate.Certificate = cert;
 tSMServiceClient.ClientCredentials.UserName.UserName = "Valentyn";
 tSMServiceClient.ClientCredentials.UserName.Password = "test_441";
 
+
+
 tSMServiceClient.Open(); 
 
 string result = await tSMServiceClient.DoWorkAsync();
