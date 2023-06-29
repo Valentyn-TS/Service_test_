@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
 using TestServiceLib;
+using System.ServiceModel.Description;
 
 namespace ServiseHostByConfig
 {

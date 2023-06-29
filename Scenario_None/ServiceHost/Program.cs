@@ -14,7 +14,6 @@ using System.ServiceModel.Description;
 using System.Security.Principal;
 
 using TestServiceLib;
-using static System.Net.WebRequestMethods;
 using System.ServiceModel.Configuration;
 using System.ServiceModel.Channels;
 
@@ -29,9 +28,14 @@ namespace ServiceHostByCode
             ServiceHost myHost = new ServiceHost(typeof(MyService), httpUri);
             
             BasicHttpBinding b = new BasicHttpBinding();
-                        
+                                    
             myHost.AddServiceEndpoint(typeof(IMyService), b, "");
-            
+
+            ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
+            smb.HttpGetEnabled = true;
+            myHost.Description.Behaviors.Add(smb);
+            myHost.AddServiceEndpoint(ServiceMetadataBehavior.MexContractName, MetadataExchangeBindings.CreateMexHttpBinding(), "mex");
+
             myHost.Open();
 
             Console.WriteLine("Host was started...");
