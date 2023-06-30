@@ -98,7 +98,7 @@ namespace MyService
         {
             if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IMyService))
             {
-                return new System.ServiceModel.EndpointAddress("http://localhost:8080/MyService/MyService");
+                return new System.ServiceModel.EndpointAddress("http://localhost:8080/MyService");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }
