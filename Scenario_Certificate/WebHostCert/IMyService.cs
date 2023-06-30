@@ -9,7 +9,7 @@ namespace WebHostCert
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]
-    public interface IMyService : MyServiceCert.IMyServise;
+    public interface IMyService : MyServiceCert.IMyServise
     {
         [OperationContract]
         int Add(int x, int y);
