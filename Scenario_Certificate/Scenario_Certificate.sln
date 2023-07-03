@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyServiceCert", "MyServiceC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebHostCert", "WebHostCert\WebHostCert.csproj", "{2332FF63-ADF7-4B98-9443-C493FEE63FB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{C44E1327-4460-4529-BFFE-DD9309FCF6BB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{AE412181-8637-4727-8E6A-57B487D74EA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{2332FF63-ADF7-4B98-9443-C493FEE63FB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2332FF63-ADF7-4B98-9443-C493FEE63FB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2332FF63-ADF7-4B98-9443-C493FEE63FB5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C44E1327-4460-4529-BFFE-DD9309FCF6BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C44E1327-4460-4529-BFFE-DD9309FCF6BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C44E1327-4460-4529-BFFE-DD9309FCF6BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C44E1327-4460-4529-BFFE-DD9309FCF6BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE412181-8637-4727-8E6A-57B487D74EA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE412181-8637-4727-8E6A-57B487D74EA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE412181-8637-4727-8E6A-57B487D74EA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE412181-8637-4727-8E6A-57B487D74EA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
