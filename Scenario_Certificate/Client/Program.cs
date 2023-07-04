@@ -27,7 +27,7 @@ client.ClientCredentials.ClientCertificate.Certificate = cert;
 
 client.Open();
 
-string result = await client.DoWorkAsync(); 
+string result = client.DoWorkAsync().Result; 
 
 Console.WriteLine(result);
 Console.ReadKey();
