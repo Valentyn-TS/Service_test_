@@ -2,7 +2,7 @@
 default_ca = CA_default          # The default CA name
 
 [ CA_default ]                                           # Default settings for the intermediate CA
-dir               = /root/CA/AppTestCA                   # Intermediate CA directory
+dir               = C:/users/tsuba/myCA/intermediateCA           # Intermediate CA directory
 certs             = $dir/certs                           # Certificates directory
 crl_dir           = $dir/crl                             # CRL directory
 new_certs_dir     = $dir/newcerts                        # New certificates directory
@@ -38,16 +38,14 @@ string_mask         = utf8only                           # UTF-8 encoding
 default_md          = sha256                             # Default message digest
 x509_extensions     = v3_intermediate_ca                 # Extensions for intermediate CA certificate
 
-
 [ req_distinguished_name ]                               # Template for the DN in the CSR
 countryName                     = Country Name (2 letter code)
-stateOrProvinceName             = State or Province Name
-localityName                    = Locality Name
-0.organizationName              = Organization Name
-organizationalUnitName          = Organizational Unit Name
-commonName                      = Common Name
-emailAddress                    = Email Address
-
+stateOrProvinceName             = State or Province Name (full name)
+localityName                    = Locality Name (city)
+0.organizationName              = Organization Name (company)
+organizationalUnitName          = Organizational Unit Name (section)
+commonName                      = Common Name (your domain)
+emailAddress                    = Email Address				
 
 [ v3_intermediate_ca ]                                      # Intermediate CA certificate extensions
 subjectKeyIdentifier = hash                                 # Subject key identifier
@@ -64,6 +62,3 @@ nsCertType = server                                         # Server certificate
 keyUsage = critical, digitalSignature, keyEncipherment      # Key usage for a server cert
 extendedKeyUsage = serverAuth                               # Extended key usage for server authentication purposes (e.g., TLS/SSL servers).
 authorityKeyIdentifier = keyid,issuer                       # Authority key identifier linking the certificate to the issuer's public key.
-
- 
-
