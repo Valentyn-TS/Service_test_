@@ -12,14 +12,7 @@ namespace ClientAppNet472
     {
         static async Task Main(string[] args)
         {
-            WSHttpBinding myBinding = new WSHttpBinding();
-            myBinding.Security.Mode = SecurityMode.Message;
-            myBinding.Security.Message.ClientCredentialType = MessageCredentialType.UserName;
-
-            EndpointAddress ea = new
-                EndpointAddress("http://localhost:14209/");
-
-            MyServiceClient client = new MyServiceClient(myBinding, ea);
+            MyServiceClient client = new MyServiceClient();
 
             client.ClientCredentials.UserName.UserName = "Vall";
             client.ClientCredentials.UserName.Password = "test_009";
