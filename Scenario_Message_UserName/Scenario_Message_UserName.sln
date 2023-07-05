@@ -1,18 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.33801.447
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebHost", "WebHost\WebHost.csproj", "{11C78BD7-7B3B-4559-BA0B-09D93E64D9BC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientApp", "ClientApp\ClientApp.csproj", "{6D3CF108-B71B-4645-BD5C-2301B2DBE6C3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientAppNet7", "ClientAppNet472\ClientAppNet7.csproj", "{CE591F1E-EBC6-4B7C-AAF6-52BE96E904A8}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientAppNet472", "ClientAppNet472\ClientAppNet472.csproj", "{326DB1D5-F535-48FA-8BFB-DDAD32942970}"
-	ProjectSection(ProjectDependencies) = postProject
-		{11C78BD7-7B3B-4559-BA0B-09D93E64D9BC} = {11C78BD7-7B3B-4559-BA0B-09D93E64D9BC}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,10 +23,6 @@ Global
 		{6D3CF108-B71B-4645-BD5C-2301B2DBE6C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D3CF108-B71B-4645-BD5C-2301B2DBE6C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D3CF108-B71B-4645-BD5C-2301B2DBE6C3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CE591F1E-EBC6-4B7C-AAF6-52BE96E904A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CE591F1E-EBC6-4B7C-AAF6-52BE96E904A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CE591F1E-EBC6-4B7C-AAF6-52BE96E904A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CE591F1E-EBC6-4B7C-AAF6-52BE96E904A8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{326DB1D5-F535-48FA-8BFB-DDAD32942970}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{326DB1D5-F535-48FA-8BFB-DDAD32942970}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{326DB1D5-F535-48FA-8BFB-DDAD32942970}.Release|Any CPU.ActiveCfg = Release|Any CPU
