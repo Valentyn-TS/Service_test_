@@ -12,11 +12,14 @@ MyServiceClient client = new MyServiceClient();
 //    X509FindType.FindBySerialNumber,
 //    "4c4ca8ba913257523b51933c1fd8b4adba494681");
 
-X509Certificate2 x509Certificate2 = new X509Certificate2("C:\\Users\\tsuba\\myCA\\to_PFX_client\\client.pfx", "");
+//X509Certificate2 x509Certificate2 = new X509Certificate2("C:\\Users\\tsuba\\myCA\\to_PFX_client\\client.pfx", "");
+X509Certificate2 x509Certificate2 = new X509Certificate2("C:\\Users\\tsuba\\myCA\\intermediateCA\\client.cert.pem", "");
 client.ClientCredentials.ClientCertificate.Certificate = x509Certificate2;
 
-Console.WriteLine(typeof(X509Certificate2));
-Console.WriteLine(x509Certificate2);
+//Console.WriteLine(typeof(X509Certificate2));
+//Console.WriteLine(x509Certificate2);
+
+Console.WriteLine(client.ClientCredentials.ClientCertificate.Certificate);
 
 client.Open(); 
 
