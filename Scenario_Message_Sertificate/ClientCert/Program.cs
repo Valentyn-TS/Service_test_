@@ -3,6 +3,7 @@
 using ServiceReference1;
 using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel.Channels;
+using System.ServiceModel.Security;
 
 MyServiceClient client = new MyServiceClient();
 
@@ -20,6 +21,9 @@ client.ClientCredentials.ClientCertificate.Certificate = x509Certificate2;
 //Console.WriteLine(x509Certificate2);
 
 Console.WriteLine(client.ClientCredentials.ClientCertificate.Certificate);
+
+client.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode = X509CertificateValidationMode.PeerOrChainTrust;
+client.ClientCredentials.ServiceCertificate.Authentication.RevocationMode = X509RevocationMode.Offline;
 
 client.Open(); 
 
