@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 WSHttpBinding b = new WSHttpBinding();
 b.Security.Mode = SecurityMode.TransportWithMessageCredential;
 b.Security.Message.ClientCredentialType = MessageCredentialType.Certificate;
+b.Security.Message.EstablishSecurityContext = false;
 
 Uri httpsAddress = new Uri("https://localhost:44389/MyService.svc/MyService");
 EndpointAddress ea = new EndpointAddress(httpsAddress);

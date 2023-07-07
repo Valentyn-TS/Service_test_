@@ -7,28 +7,23 @@ using System.ServiceModel.Security;
 
 MyServiceClient client = new MyServiceClient();
 
-//client.ClientCredentials.ClientCertificate.SetCertificate(
-//    StoreLocation.CurrentUser,
-//    StoreName.My,
-//    X509FindType.FindBySerialNumber,
-//    "4c4ca8ba913257523b51933c1fd8b4adba494681");
+client.ClientCredentials.ClientCertificate.SetCertificate(
+    StoreLocation.CurrentUser,
+    StoreName.My,
+    X509FindType.FindBySerialNumber,
+    "17c0c8e126287414ef07bb5e76d9a208aececde2");
 
 //X509Certificate2 x509Certificate2 = new X509Certificate2("C:\\Users\\tsuba\\myCA\\to_PFX_client\\client.pfx", "");
-X509Certificate2 x509Certificate2 = new X509Certificate2("C:\\Users\\tsuba\\myCA\\intermediateCA\\client.cert.pem", "");
-client.ClientCredentials.ClientCertificate.Certificate = x509Certificate2;
+//X509Certificate2 x509Certificate2 = new X509Certificate2("C:\\Users\\tsuba\\myCA\\intermediateCA\\client.cert.pem", "");
+//client.ClientCredentials.ClientCertificate.Certificate = x509Certificate2;
+
 
 //Console.WriteLine(typeof(X509Certificate2));
 //Console.WriteLine(x509Certificate2);
 
 Console.WriteLine(client.ClientCredentials.ClientCertificate.Certificate);
 
-client.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode = X509CertificateValidationMode.PeerOrChainTrust;
-client.ClientCredentials.ServiceCertificate.Authentication.RevocationMode = X509RevocationMode.Offline;
-
-client.Open(); 
-
 string result = await client.DoWorkAsync(); 
 Console.WriteLine(result);
 Console.ReadKey();  
 
-client.Close();
