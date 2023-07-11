@@ -26,7 +26,7 @@ client.ClientCredentials.ClientCertificate.SetCertificate(
 //X509Certificate2 x509Certificate2 = new X509Certificate2("C:\\Users\\tsuba\\myCA\\to_PFX_client\\client.pfx", "");
 //X509Certificate2 x509Certificate2 = new X509Certificate2("C:\\Users\\tsuba\\myCA\\intermediateCA\\client.cert.pem", "");
 //client.ClientCredentials.ClientCertificate.Certificate = x509Certificate2;
-
+// ***
 //Console.WriteLine(typeof(X509Certificate2));
 //Console.WriteLine(x509Certificate2);
 
