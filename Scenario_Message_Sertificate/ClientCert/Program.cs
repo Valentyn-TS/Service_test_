@@ -2,10 +2,19 @@
 
 using ServiceReference1;
 using System.Security.Cryptography.X509Certificates;
+using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Security;
 
-MyServiceClient client = new MyServiceClient();
+WSHttpBinding b = new WSHttpBinding();
+b.Security.Mode = SecurityMode.TransportWithMessageCredential;
+b.Security.Message.ClientCredentialType = MessageCredentialType.Certificate;
+b.Security.Message.EstablishSecurityContext = false;
+
+Uri httpsAddress = new Uri("https://localhost:44395/MyService.svc/MyService");
+EndpointAddress ea = new EndpointAddress(httpsAddress);
+
+MyServiceClient client = new MyServiceClient(b, ea);
 
 client.ClientCredentials.ClientCertificate.SetCertificate(
     StoreLocation.CurrentUser,
