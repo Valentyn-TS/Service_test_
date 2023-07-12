@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebHost", "WebHost\WebHost.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientApp", "ClientApp\ClientApp.csproj", "{9BF65339-5508-4EB6-A2C1-33A5763A7DC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STS", "STS\STS.csproj", "{9908B759-2A23-41F3-9F3C-4226E24270CC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STS", "STS\STS.csproj", "{8423E294-DF1F-40C7-9F37-384EE2AE9F9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{9BF65339-5508-4EB6-A2C1-33A5763A7DC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BF65339-5508-4EB6-A2C1-33A5763A7DC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BF65339-5508-4EB6-A2C1-33A5763A7DC8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9908B759-2A23-41F3-9F3C-4226E24270CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9908B759-2A23-41F3-9F3C-4226E24270CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9908B759-2A23-41F3-9F3C-4226E24270CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9908B759-2A23-41F3-9F3C-4226E24270CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8423E294-DF1F-40C7-9F37-384EE2AE9F9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8423E294-DF1F-40C7-9F37-384EE2AE9F9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8423E294-DF1F-40C7-9F37-384EE2AE9F9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8423E294-DF1F-40C7-9F37-384EE2AE9F9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
