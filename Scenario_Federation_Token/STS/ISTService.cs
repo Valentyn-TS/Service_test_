@@ -12,6 +12,6 @@ namespace STS
     public interface ISTService
     {
         [OperationContract]
-        void DoWork();
+        string GetToken();
     }
 }

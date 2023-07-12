@@ -11,8 +11,9 @@ namespace STS
     // NOTE: In order to launch WCF Test Client for testing this service, please select STService.svc or STService.svc.cs at the Solution Explorer and start debugging.
     public class STService : ISTService
     {
-        public void DoWork()
+        public string GetToken()
         {
+            return "I hear you! Take your Token!.... ";
         }
     }
 }
