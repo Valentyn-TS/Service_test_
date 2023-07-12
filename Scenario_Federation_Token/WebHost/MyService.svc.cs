@@ -13,7 +13,7 @@ namespace WebHost
     {
         public string DoWork()
         {
-            return "Hello =), I'm working!";
+            return "Hello =)";
         }
     }
 }

@@ -9,9 +9,8 @@ using System.Threading.Tasks;
 
 WSHttpBinding b = new WSHttpBinding();
 b.Security.Mode = SecurityMode.TransportWithMessageCredential;
-b.Security.Message.ClientCredentialType = MessageCredentialType.IssuedToken;
+b.Security.Message.ClientCredentialType = MessageCredentialType.Certificate;
 b.Security.Message.EstablishSecurityContext = false;
-
 
 Uri httpsAddress = new Uri("https://localhost:44389/MyService.svc/MyService");
 EndpointAddress ea = new EndpointAddress(httpsAddress);
@@ -23,6 +22,13 @@ client.ClientCredentials.ClientCertificate.SetCertificate(
     StoreName.My,
     X509FindType.FindBySerialNumber,
     "17c0c8e126287414ef07bb5e76d9a208aececde1");
+
+//X509Certificate2 x509Certificate2 = new X509Certificate2("C:\\Users\\tsuba\\myCA\\to_PFX_client\\client.pfx", "");
+//X509Certificate2 x509Certificate2 = new X509Certificate2("C:\\Users\\tsuba\\myCA\\intermediateCA\\client.cert.pem", "");
+//client.ClientCredentials.ClientCertificate.Certificate = x509Certificate2;
+// *****
+//Console.WriteLine(typeof(X509Certificate2));
+//Console.WriteLine(x509Certificate2);
 
 Console.WriteLine(client.ClientCredentials.ClientCertificate.Certificate);
 
