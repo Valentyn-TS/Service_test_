@@ -2,8 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.ServiceModel;
 using System.Text;
+using System.IdentityModel.Claims;
+using System.IdentityModel.Tokens.Jwt;
+using System.ServiceModel.Activation;
+using System.ServiceModel;
+using System.IdentityModel;
+using System.Security.Claims;
+using System.IdentityModel.Protocols.WSTrust;
+using System.IdentityModel.Configuration;
 
 namespace STS
 {
@@ -14,6 +21,23 @@ namespace STS
         public string GetToken()
         {
             return "I hear you! Take your Token!.... ";
+        }
+    }
+
+    public class MySecurityTokenService : SecurityTokenService
+    {
+        public MySecurityTokenService(SecurityTokenServiceConfiguration securityTokenServiceConfiguration) : base(securityTokenServiceConfiguration)
+        {
+        }
+
+        protected override ClaimsIdentity GetOutputClaimsIdentity(ClaimsPrincipal principal, RequestSecurityToken request, Scope scope)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override Scope GetScope(ClaimsPrincipal principal, RequestSecurityToken request)
+        {
+            throw new NotImplementedException();
         }
     }
 }
