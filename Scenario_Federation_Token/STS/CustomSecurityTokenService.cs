@@ -43,5 +43,17 @@ namespace STS
 
             return scope;
         }
+
+        protected override SecurityTokenServiceConfiguration CreateSecurityTokenServiceConfiguration
+        {
+            get
+            {
+                SecurityTokenServiceConfiguration configuration = base.CreateSecurityTokenServiceConfiguration();
+
+                configuration.SecurityTokenService = typeof(CustomSecurityTokenService);
+
+                return configuration;
+            }
+        }
     }
 }
