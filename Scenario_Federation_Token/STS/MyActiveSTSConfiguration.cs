@@ -18,12 +18,12 @@ namespace STS
             SecurityTokenService = typeof(MyActiveSTS);
         }
 
-        private static X509Certificate2 GetCertificate()
+        private static X509Certificate2 GetCertificateBySerialNumber(string serialNumber)
         {
             var certsStore = new X509Store("My", StoreLocation.CurrentUser);
             certsStore.Open(OpenFlags.ReadOnly);
 
-            var cert = certsStore.Certificates.Find(X509FindType.FindBySerialNumber, "1000", true);
+            var cert = certsStore.Certificates.Find(X509FindType.FindBySerialNumber, serialNumber, true);
 
             if (cert != null) return new X509Certificate2(cert[0]);
             return null;
