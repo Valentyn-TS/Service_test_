@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IdentityModel;
-using System.IdentityModel.Claims;
 using System.IdentityModel.Configuration;
 using System.IdentityModel.Protocols.WSTrust;
 using System.IdentityModel.Tokens;
+using System.Security.Claims;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Web;
+
 
 namespace STS
 {
@@ -38,7 +39,7 @@ namespace STS
             // Додавання побіжних даних до заявки (ClaimsRequest)
             scope.TokenEncryptionRequired = true;
             scope.ReplyToAddress = scope.AppliesToAddress;
-            scope.Properties.Add(new ClaimSet.(Claim.DefaultComparer, new Claim[] { nameClaim, roleClaim }));
+            scope.Properties.Add(new  Claim(Claim.Equals, new Claim[] { nameClaim, roleClaim }));
             
 
             return scope;
