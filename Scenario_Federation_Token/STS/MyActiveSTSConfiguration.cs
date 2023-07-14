@@ -12,7 +12,7 @@ namespace STS
 {
     public class MyActiveSTSConfiguration : SecurityTokenServiceConfiguration
     {
-      public MyActiveSTSConfiguration() : base("MyActiveSTS", new X509SigningCredentials(GetCertificate()))
+      public MyActiveSTSConfiguration() : base("MyActiveSTS", new X509SigningCredentials(GetCertificateBySerialNumber("1000")))
         {
             TokenIssuerName = "MyActiveSTS";
             SecurityTokenService = typeof(MyActiveSTS);
