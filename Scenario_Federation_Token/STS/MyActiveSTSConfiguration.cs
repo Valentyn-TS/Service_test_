@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IdentityModel.Configuration;
 using System.IdentityModel.Tokens;
+using System.IdentityModel.Claims;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel.Configuration;
@@ -18,7 +19,7 @@ namespace STS
             SecurityTokenService = typeof(MyActiveSTS);
         }
 
-        private static X509Certificate2 GetCertificateBySerialNumber(string serialNumber)
+        public static X509Certificate2 GetCertificateBySerialNumber(string serialNumber)
         {
             var certsStore = new X509Store("My", StoreLocation.CurrentUser);
             certsStore.Open(OpenFlags.ReadOnly);
