@@ -40,7 +40,43 @@ namespace STS
 
         protected override Scope GetScope(ClaimsPrincipal principal, RequestSecurityToken request)
         {
-            
+            ValidateAppliesTo(request.AppliesTo);
+
+            Scope scope = new Scope(request.AppliesTo.Uri.AbsoluteUri, _signingCreds);
+
+            if (Uri.IsWellFormedUriString(request.ReplyTo, UriKind.Absolute))
+            {
+                if (request.AppliesTo.Uri.Host != new Uri(request.ReplyTo).Host)
+                    scope.ReplyToAddress = request.AppliesTo.Uri.AbsoluteUri;
+                else
+                    scope.ReplyToAddress = request.ReplyTo;
+            }
+            else
+            {
+                Uri resultUri = null;
+                if (Uri.TryCreate(request.AppliesTo.Uri, request.ReplyTo, out resultUri))
+                    scope.ReplyToAddress = resultUri.AbsoluteUri;
+                else
+                    scope.ReplyToAddress = request.AppliesTo.Uri.ToString();
+            }
+
+            scope.EncryptingCredentials = _encryptingCreds;
+
+            return scope;
+
+        }
+
+        void ValidateAppliesTo(EndpointReference appliesTo)
+        {
+            if (appliesTo == null)
+            {
+                throw new InvalidRequestException("The appliesTo is null.");
+            }
+
+            if (!appliesTo.Uri.Equals(new Uri(_addressExpected)))
+            {
+                throw new InvalidRequestException(String.Format("The relying party address is not valid. Expected value is {0}, the actual value is {1}.", _addressExpected, appliesTo.Uri.AbsoluteUri));
+            }
         }
     }
 }
