@@ -68,6 +68,17 @@ namespace WebHost
             }
             return true;
         }
+
+        private X509Certificate2 GetHomeStsCertificate()
+        {
+            var certsStore = new X509Store("My", StoreLocation.CurrentUser);
+            certsStore.Open(OpenFlags.ReadOnly);
+
+            var cert = certsStore.Certificates.Find(X509FindType.FindBySerialNumber, "1000", true);
+
+            if (cert != null) return new X509Certificate2(cert[0]);
+            return null;
+        }
     }
 
 }
