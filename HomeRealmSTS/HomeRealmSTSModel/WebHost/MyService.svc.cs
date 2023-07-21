@@ -31,9 +31,9 @@ namespace WebHost
             if (authContext.ClaimSets == null) return false;
             if (authContext.ClaimSets.Count != 1) return false;
             ClaimSet myClaimSet = authContext.ClaimSets[0];
-            if (!IssuedByHomeSTS(myClaimSet)) return false;
             if (myClaimSet.Count != 1) return false;
             Claim myClaim = myClaimSet[0];
+            if (!IssuedByHomeSTS(myClaimSet)) return false;
             if (myClaim.ClaimType == "http://www.tmpuri.org:accessAuthorized")
             {
                 string resource = myClaim.Resource as string;
