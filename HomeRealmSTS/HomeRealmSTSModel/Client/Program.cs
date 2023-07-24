@@ -26,11 +26,6 @@ namespace Client
             EndpointAddress issuerMetadataEA = new EndpointAddress("http://localhost:50987/HomeSTS/MySTS.svc/mex");
             b.Security.Message.IssuerMetadataAddress = issuerMetadataEA;
 
-            XmlElementElementCollection tokenRequestParams = new XmlElementElementCollection();
-            tokenRequestParams.Add();
-             
-            b.Security.Message.TokenRequestParameters.Add()
-            
             EndpointAddress serviceEA = new EndpointAddress("http://localhost:50500//MyService/MyService.svc");
 
             MyServiceR.MyServiceClient client = new MyServiceR.MyServiceClient(b, serviceEA);
@@ -40,7 +35,7 @@ namespace Client
                 StoreName.My,
                 X509FindType.FindBySerialNumber,
                 "17c0c8e126287414ef07bb5e76d9a208aececde1");
-
+            
             Console.WriteLine(client.DoWorkAsync().Result);
             Console.ReadLine();
 
