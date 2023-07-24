@@ -57,7 +57,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app1.config" />
     <None Include="Connected Services\MyServiceR\MyService.wsdl" />
     <None Include="Connected Services\MyServiceR\MyService.xsd">
       <SubType>Designer</SubType>
