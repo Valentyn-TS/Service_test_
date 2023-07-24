@@ -23,7 +23,7 @@ namespace WebHost
         }
     }
 
-    public class myServiceAuthorizationManager : ServiceAuthorizationManager
+    public class MyServiceAuthorizationManager : ServiceAuthorizationManager
     {
         public override bool CheckAccess(OperationContext operationContext)
         {
