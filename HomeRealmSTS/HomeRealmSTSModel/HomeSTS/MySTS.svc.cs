@@ -13,7 +13,11 @@ namespace HomeSTS
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class MySTS: IMySTS
     {
-
+        public int DoSomething()
+        {
+            int number = 123;
+            return number;
+        }
     }
 
     public class MySTS_AuthorizationManager : ServiceAuthorizationManager
