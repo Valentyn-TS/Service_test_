@@ -13,8 +13,5 @@ namespace HomeSTS
     {
         [OperationContract]
         int DoSomething();
-
-
-        
     }
 }

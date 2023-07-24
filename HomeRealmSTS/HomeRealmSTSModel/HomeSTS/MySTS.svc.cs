@@ -18,19 +18,12 @@ namespace HomeSTS
             int number = 123;
             return number;
         }
-    }
 
     public class MySTS_AuthorizationManager : ServiceAuthorizationManager
     {
         public override bool CheckAccess(OperationContext operationContext)
         {
-            AuthorizationContext authContext = operationContext.ServiceSecurityContext.AuthorizationContext;
-            if (authContext.ClaimSets == null) return false;
-            if (authContext.ClaimSets.Count != 1) return false;
-            ClaimSet myClaimSet = authContext.ClaimSets[0];
-            if (myClaimSet.Count != 1) return false;
-
-            return true;
+            return base.CheckAccess(operationContext);
         }
 
     }

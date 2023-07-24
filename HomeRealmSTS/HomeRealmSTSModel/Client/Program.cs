@@ -25,6 +25,11 @@ namespace Client
             b.Security.Message.IssuerAddress = issuerEA;
             EndpointAddress issuerMetadataEA = new EndpointAddress("http://localhost:50987/HomeSTS/MySTS.svc/mex");
             b.Security.Message.IssuerMetadataAddress = issuerMetadataEA;
+
+            XmlElementElementCollection tokenRequestParams = new XmlElementElementCollection();
+            tokenRequestParams.Add();
+             
+            b.Security.Message.TokenRequestParameters.Add()
             
             EndpointAddress serviceEA = new EndpointAddress("http://localhost:50500//MyService/MyService.svc");
 
