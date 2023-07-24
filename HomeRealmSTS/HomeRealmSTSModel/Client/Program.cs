@@ -30,12 +30,16 @@ namespace Client
 
             MyServiceR.MyServiceClient client = new MyServiceR.MyServiceClient(b, serviceEA);
 
-            //client.ClientCredentials.ClientCertificate.Certificate; 
-            X509Certificate2 cert = new X509Certificate2();
-            //    cert = X509Certificate2(StoreLocation.CurrentUser, StoreName.My, X509FindType.FindBySerialNumber, "");
+            client.ClientCredentials.ClientCertificate.SetCertificate(
+                StoreLocation.CurrentUser,
+                StoreName.My,
+                X509FindType.FindBySerialNumber,
+                "17c0c8e126287414ef07bb5e76d9a208aececde1");
 
             Console.WriteLine(client.DoWorkAsync().Result);
             Console.ReadLine();
+
+            client.Close();
         }
     }
 }
