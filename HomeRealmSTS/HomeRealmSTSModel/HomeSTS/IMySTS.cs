@@ -11,7 +11,6 @@ namespace HomeSTS
     [ServiceContract]
     public interface IMySTS
     {
-        [OperationContract]
-        int DoSomething();
+
     }
 }

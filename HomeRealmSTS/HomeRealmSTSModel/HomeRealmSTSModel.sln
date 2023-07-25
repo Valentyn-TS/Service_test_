@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeSTS", "HomeSTS\HomeSTS.csproj", "{EC7DDC90-389E-4259-9B28-4175302DEF9B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientCore", "ClientCore\ClientCore.csproj", "{097F8CDF-58DC-4896-8183-EFF991B3B686}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{EC7DDC90-389E-4259-9B28-4175302DEF9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC7DDC90-389E-4259-9B28-4175302DEF9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC7DDC90-389E-4259-9B28-4175302DEF9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{097F8CDF-58DC-4896-8183-EFF991B3B686}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{097F8CDF-58DC-4896-8183-EFF991B3B686}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{097F8CDF-58DC-4896-8183-EFF991B3B686}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{097F8CDF-58DC-4896-8183-EFF991B3B686}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
