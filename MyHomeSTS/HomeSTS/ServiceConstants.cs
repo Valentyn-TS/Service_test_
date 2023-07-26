@@ -8,7 +8,7 @@ namespace My_STS
     class ServiceConstants
     {
         // Issuer name placed into issued tokens
-        internal const string StsName = "Home Realm STS";
+        internal const string StsName = "Home STS";
 
         // Statics for location of certs
         internal static StoreName CertStoreName = StoreName.TrustedPeople;
@@ -44,7 +44,7 @@ namespace My_STS
         {
             if (String.IsNullOrEmpty(s))
             {
-                throw new ConfigurationErrorsException("Required Configuration Element(s) missing at HomeRealmSTS. Please check the STS configuration file.");
+                throw new ConfigurationErrorsException("Required Configuration Element(s) missing at HomeSTS. Please check the STS configuration file.");
             }
         }
 

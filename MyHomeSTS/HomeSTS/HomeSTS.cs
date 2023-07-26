@@ -5,7 +5,7 @@ using System.IdentityModel.Tokens;
 using System.Security.Permissions;
 using System.ServiceModel;
 
-namespace My_STS.HomeSTS
+namespace My_STS
 {
     [ServiceBehavior(IncludeExceptionDetailInFaults = true)]
     public class HomeSTS : SecurityTokenService
