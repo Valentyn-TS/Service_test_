@@ -19,7 +19,6 @@ namespace My_STS
         internal static string TargetDistinguishedName;
         internal static double PurchaseLimit;
 
-        #region Helper functions to load app settings from config
         /// <summary>
         /// Helper function to load Application Settings from config
         /// </summary>
@@ -47,8 +46,6 @@ namespace My_STS
                 throw new ConfigurationErrorsException("Required Configuration Element(s) missing at HomeSTS. Please check the STS configuration file.");
             }
         }
-
-        #endregion
 
         private ServiceConstants() { }
     }
