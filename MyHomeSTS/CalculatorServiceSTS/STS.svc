@@ -1,0 +1,1 @@
+﻿<%@ServiceHost language="C#" Factory="My_STS.CalculatorServiceSTSHostFactory" %>
