@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IdentityModel.Claims;
+using System.IdentityModel.Policy;
 using System.IdentityModel.Tokens;
 using System.IO;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace My_STS
         /// <summary>
         /// Sets up the BookStoreSTS by loading relevant Application Settings
         /// </summary>
-        public BookStoreSTS()
+        public CalculatorServiceSTS()
             : base(ServiceConstants.SecurityTokenServiceName,
                    FederationUtilities.GetX509TokenFromCert(ServiceConstants.CertStoreName, ServiceConstants.CertStoreLocation, ServiceConstants.CertDistinguishedName),
                    FederationUtilities.GetX509TokenFromCert(ServiceConstants.CertStoreName, ServiceConstants.CertStoreLocation, ServiceConstants.TargetDistinguishedName))
@@ -41,8 +42,6 @@ namespace My_STS
             string bookName = rstAppliesTo.Headers.FindHeader(Constants.BookNameHeaderName, Constants.BookNameHeaderNamespace).GetValue<string>();
             if (string.IsNullOrEmpty(bookName))
                 throw new FaultException("The book name was not specified in the RequestSecurityToken");
-
-            EnsurePurchaseLimitSufficient(bookName);
 
             Collection<SamlAttribute> samlAttributes = new Collection<SamlAttribute>();
 
@@ -73,106 +72,85 @@ namespace My_STS
             samlConditions.Conditions.Add(new SamlAudienceRestrictionCondition(new Uri[] { new Uri(Constants.BookStoreServiceAudienceUri) }));
         }
 
-        #region Helper Methods
+        #region example. Unused
         /// <summary>
         /// Wrapper for the Application level check performed at the BookStoreSTS for 
         /// the existence of required purchase limit 
         /// </summary>
-        private static void EnsurePurchaseLimitSufficient(string bookName)
-        {
-            if (!CheckIfPurchaseLimitMet(bookName))
-            {
-                throw new FaultException(String.Format("Purchase limit not sufficient to purchase '{0}'", bookName));
-            }
-        }
 
-        /// <summary>
-        /// Helper method to get book price from the Books Database
-        /// </summary>
-        /// <param name="bookID">ID of the book intended for purchase</param>
-        /// <returns>Price of the book with the given ID</returns>
-        private static double GetBookPrice(string bookName)
-        {
-            using (StreamReader myStreamReader = new StreamReader(ServiceConstants.BookDB))
-            {
-                string line = "";
-                while ((line = myStreamReader.ReadLine()) != null)
-                {
-                    string[] splitEntry = line.Split('#');
-                    if (splitEntry[1].Trim().Equals(bookName.Trim(), StringComparison.OrdinalIgnoreCase))
-                    {
-                        return Double.Parse(splitEntry[3]);
-                    }
-                }
-                // invalid bookName - throw
-                throw new FaultException("Invalid Book Name " + bookName);
-            }
-        }
+        //private static void EnsurePurchaseLimitSufficient(string bookName)
+        //{
+        //    if (!CheckIfPurchaseLimitMet(bookName))
+        //    {
+        //        throw new FaultException(String.Format("Purchase limit not sufficient to purchase '{0}'", bookName));
+        //    }
+        //}
 
-        /// <summary>
-        /// Application level check for claims at the BookStoreSTS
-        /// </summary>
-        /// <param name="bookID">ID of the book intended for purchase</param>
-        /// <returns>True on success. False on failure.</returns>
-        private static bool CheckIfPurchaseLimitMet(string bookID)
-        {
-            // Extract the AuthorizationContext from the ServiceSecurityContext
-            AuthorizationContext authContext = OperationContext.Current.ServiceSecurityContext.AuthorizationContext;
+        ///// <summary>
+        ///// Application level check for claims at the BookStoreSTS
+        ///// </summary>
+        ///// <param name="bookID">ID of the book intended for purchase</param>
+        ///// <returns>True on success. False on failure.</returns>
 
-            // If there are no Claims in the AuthorizationContext, return false
-            // The issued token used to authenticate should contain claims 
-            if (authContext.ClaimSets == null)
-                return false;
+        //       private static bool CheckIfPurchaseLimitMet(string bookID)
+        //       {
+        //           // Extract the AuthorizationContext from the ServiceSecurityContext
+        //           AuthorizationContext authContext = OperationContext.Current.ServiceSecurityContext.AuthorizationContext;
 
-            // If there is more than two ClaimSets in the AuthorizationContext, return false
-            // The issued token used to authenticate should only contain two sets of claims.
-            if (authContext.ClaimSets.Count != 2)
-                return false;
+        //           // If there are no Claims in the AuthorizationContext, return false
+        //           // The issued token used to authenticate should contain claims 
+        //           if (authContext.ClaimSets == null)
+        //               return false;
 
-            List<ClaimSet> claimsets = new List<ClaimSet>(authContext.ClaimSets);
-            ClaimSet myClaimSet = claimsets.Find((Predicate<ClaimSet>)delegate (ClaimSet target)
-            {
-                X509CertificateClaimSet certClaimSet = target.Issuer as X509CertificateClaimSet;
-                return certClaimSet != null && certClaimSet.X509Certificate.Subject == "CN=HomeRealmSTS.com";
-            });
+        //           // If there is more than two ClaimSets in the AuthorizationContext, return false
+        //           // The issued token used to authenticate should only contain two sets of claims.
+        //           if (authContext.ClaimSets.Count != 2)
+        //               return false;
 
-            // Is the ClaimSet was NOT issued by the HomeRealmSTS then return false
-            // The BookStoreSTS only accepts requests where the client authenticated using a token
-            // issued by the HomeRealmSTS.
-            if (!IssuedByHomeRealmSTS(myClaimSet))
-                return false;
+        //           List<ClaimSet> claimsets = new List<ClaimSet>(authContext.ClaimSets);
+        //           ClaimSet myClaimSet = claimsets.Find((Predicate<ClaimSet>)delegate (ClaimSet target)
+        //           {
+        //               X509CertificateClaimSet certClaimSet = target.Issuer as X509CertificateClaimSet;
+        //               return certClaimSet != null && certClaimSet.X509Certificate.Subject == "CN=HomeRealmSTS.com";
+        //           });
 
-            // Find all the PurchaseLimit claims
-            IEnumerable<Claim> purchaseLimitClaims = myClaimSet.FindClaims(Constants.PurchaseLimitClaim, Rights.PossessProperty);
+        //           // Is the ClaimSet was NOT issued by the HomeRealmSTS then return false
+        //           // The BookStoreSTS only accepts requests where the client authenticated using a token
+        //           // issued by the HomeRealmSTS.
+        //           if (!IssuedByHomeSTS(myClaimSet))
+        //               return false;
 
-            // If there are no PurchaseLimit claims, return false
-            // The HomeRealmSTS issues tokens containing PurchaseLimit claims for all authorized requests.
-            if (purchaseLimitClaims == null)
-                return false;
+        //           // Find all the PurchaseLimit claims
+        //           IEnumerable<Claim> purchaseLimitClaims = myClaimSet.FindClaims(Constants.PurchaseLimitClaim, Rights.PossessProperty);
 
-            // Get the price of the book being purchased...
-            double bookPrice = GetBookPrice(bookID);
+        //           // If there are no PurchaseLimit claims, return false
+        //           // The HomeRealmSTS issues tokens containing PurchaseLimit claims for all authorized requests.
+        //           if (purchaseLimitClaims == null)
+        //               return false;
 
-            // Iterate through the PurchaseLimit claims and verify that the Resource value is 
-            // greater than or equal to the price of the book being purchased
-            foreach (Claim c in purchaseLimitClaims)
-            {
-                double purchaseLimit = Double.Parse(c.Resource.ToString());
-                if (purchaseLimit >= bookPrice)
-                    return true;
-            }
+        //           // Get the price of the book being purchased...
+        //           double bookPrice = GetBookPrice(bookID);
 
-            // If no PurchaseLimit claim had a resource value that was greater than or equal
-            // to the price of the book being purchased, return false
-            return false;
-        }
+        //           // Iterate through the PurchaseLimit claims and verify that the Resource value is 
+        //           // greater than or equal to the price of the book being purchased
+        //           foreach (Claim c in purchaseLimitClaims)
+        //           {
+        //               double purchaseLimit = Double.Parse(c.Resource.ToString());
+        //               if (purchaseLimit >= bookPrice)
+        //                   return true;
+        //           }
 
+        //           // If no PurchaseLimit claim had a resource value that was greater than or equal
+        //           // to the price of the book being purchased, return false
+        //           return false;
+        //       }
+        #endregion
 
         /// <summary>
         /// Helper function to check if SAML Token was issued by HomeRealmSTS
         /// </summary>
         /// <returns>True on success. False on failure.</returns>
-        private static bool IssuedByHomeRealmSTS(ClaimSet myClaimSet)
+        private static bool IssuedByHomeSTS(ClaimSet myClaimSet)
         {
             // Extract the issuer ClaimSet
             ClaimSet issuerClaimSet = myClaimSet.Issuer;
@@ -232,6 +210,5 @@ namespace My_STS
             // If we get through all the above checks, return true (ClaimSet was issued by HomeRealmSTS.com)
             return true;
         }
-        #endregion
     }
 }
