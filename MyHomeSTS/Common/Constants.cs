@@ -8,15 +8,15 @@ namespace My_STS
 {
     public class Constants
     {
-        public const string BookNameHeaderNamespace = "http://tempuri.org/";
-        public const string BookNameHeaderName = "BookName";
-        public const string PurchaseClaimNamespace = "http://tempuri.org/";
-        public const string PurchaseAuthorizedClaim = PurchaseClaimNamespace + "PurchaseAuthorizedClaim";
-        public const string PurchaseLimitClaim = PurchaseClaimNamespace + "PurchaseLimitClaim";
+        public const string CalculatorHeaderNamespace = "http://tempuri.org/";
+        public const string CalcolatorHeaderName = "CalculatorName";
+        //public const string PurchaseClaimNamespace = "http://tempuri.org/";
+        //public const string PurchaseAuthorizedClaim = PurchaseClaimNamespace + "PurchaseAuthorizedClaim";
+        //public const string PurchaseLimitClaim = PurchaseClaimNamespace + "PurchaseLimitClaim";
         public const string SamlTokenTypeUri = "http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV1.1";
 
-        public const string BookStoreServiceAudienceUri = "http://localhost/FederationSample/BookStoreService/store.svc/buy";
-        public const string BookStoreSTSAudienceUri = "http://localhost/FederationSample/BookStoreSTS/STS.svc";
+        public const string CalculatorServiceAudienceUri = "http://localhost/My_STS/CalculatorService/CalculatorService.svc";
+        public const string CalculatorServiceSTSAudienceUri = "http://localhost/My_STS/CalculatorServiceSTS/STS.svc";
 
         // Various constants for WS-Trust
         public class Trust

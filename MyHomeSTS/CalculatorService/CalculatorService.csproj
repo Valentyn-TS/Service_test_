@@ -60,5 +60,8 @@
   <ItemGroup>
     <None Include="Web.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="CalculatorService.svc" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
